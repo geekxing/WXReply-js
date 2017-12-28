@@ -20,6 +20,7 @@ app.use(wechat(config.wechat).middleware(message()));
 
 app.use(controller());
 
-app.listen(8080);
-console.log('app started at port 8080...');
+let port = 3000;
+app.listen(port);
+console.log(`app started at port ${port}...`);
 
