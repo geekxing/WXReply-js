@@ -1,0 +1,14 @@
+{
+  "name": "WXReply-js",
+  "version": "0.0.1",
+  "dependencies": {
+    "co-wechat": "^2.3.0",
+    "koa": "2.4.1",
+    "koa-bodyparser": "4.2.0",
+    "koa-router": "7.3.0",
+    "mime": "2.0.3",
+    "mz": "2.7.0",
+    "request": "2.83.0",
+    "wechat-api": "^1.35.1"
+  }
+}
