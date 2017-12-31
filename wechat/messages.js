@@ -52,7 +52,7 @@ function findByUid(from, array) {
 }
 
 async function getUser(openid) {
-    console.log(openid);
+    console.log(`get user info with ${openid}`);
     var api = new API(config.wechat.appid, config.wechat.appSecret);
     try {
         var result = await api.getUser(openid);
@@ -80,7 +80,9 @@ async function updateUserContent(_user, k) {
         await user.save();
     } else  {
         var contents = await Content.findAll({where:{fromUserName:from}});
+        var info;
         if (k === KEYWORD) {  //插入关键词
+            info = await getUser(from);
             var exist = false;
             for (var i in contents) {
                 var obj = contents[i];
@@ -101,6 +103,8 @@ async function updateUserContent(_user, k) {
                 var content = await Content.create(obj);
                 contents.push(content);
             }
+            info['contents'] = contents;
+            await user.update(info);
         } else if (k === DESCRIPTION) {  //更新描述
             var index = contents.length - 1;
             if (index < 0) {
@@ -111,9 +115,8 @@ async function updateUserContent(_user, k) {
             obj[k] = word;
             await obj.save();
             contents[index] = obj;
+            await user.update({contents: contents});
         }
-        user.contents = contents;
-        await user.save();
     }
 }
 
