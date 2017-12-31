@@ -52,6 +52,7 @@ function findByUid(from, array) {
 }
 
 async function getUser(openid) {
+    console.log(openid);
     var api = new API(config.wechat.appid, config.wechat.appSecret);
     try {
         var result = await api.getUser(openid);
