@@ -3,19 +3,13 @@ const Content = require('../models/Content');
 const Pair = require('../models/Pair');
 const API = require('co-wechat-api');
 const config = require('../config');
+const db = require('../db');
 
-let systemPhrase = ['关键词','确认','修改','1','2'],
+let systemPhrase = ['巴士','确认','修改','1','2'],
     KEYWORD = 'keyword',
     DESCRIPTION = 'descr',
     USERNAME = 'name',
-    ERROR_RESTART = '出错啦！请重新开始...',
-    STEPS_REPLY = ['请输入你的关键词',
-                   '1确认 2修改',
-                   '请输入你的描述',
-                   '1确认 2修改',
-                   '请输入你的姓名',
-                   '1确认 2修改',
-                   '下载校上行'];
+    ERROR_RESTART = '出错啦！请重新开始...';
 
 // { ToUserName: 'gh_037eaffcc126',
 //     FromUserName: 'o0XX20dfGVfXaS_AwyWYCz-IV2-g',
@@ -26,6 +20,48 @@ let systemPhrase = ['关键词','确认','修改','1','2'],
 
 // 该表维护进度
 var m = [];
+
+function STEPS_REPLY(_user, index) {
+    var keyword = _user[KEYWORD];
+    if (index === 0) {
+        return `欢迎你乘坐18号巴士！
+为了找到你这次旅途的旅伴
+快来输入你的【关键词】吧~
+例如：减肥/考研/健身/考雅思/学习/变帅（不可以超过三个字哦）
+`;} else if (index === 1) {
+        return `你的关键词是：
+        
+${keyword}
+
+确定 回复【1】	修改 回复【2】
+注意：一旦确定，将无法再次修改哦！
+`;} else if (index === 2) {
+        return `为什么以  ${keyword}  作为你的2018关键词呢？
+描述一下它吧~（建议50~200字）
+你详尽丰富的描述可以让Ta对你的了解更多呦~
+`;} else if (index === 3) {
+        return `你的【关键词描述】：
+
+${_user[DESCRIPTION]}
+
+确认 回复【1】	修改 回复【2】
+`;} else if (index === 4) {
+        return `输入你的【姓名】+【学院】+【专业】吧~
+注意：一定是真实姓名，对方才可以找到你哦~`;
+    } else if (index === 5) {
+        return `你的名字、学院及专业：
+        
+${_user[USERNAME]}
+
+确认 回复【1】 修改 回复【2】
+`;} else if (index === 6) {
+        return `车票已经预定成功，系统正在为你匹配旅伴中，请耐心等候Ta的出现哦！
+为了确保所有的参与同学均是江南大学学生，只有使用校上行APP，才可以找到彼此哦！
+【校上行】是由江南大学在校生自主开发的一款社交APP，目前只对江南大学用户开放哦！在这里，你可以结识全校的任何一位同学，「校友通讯录」中精细分类学院、专业、年级，让你校内找人从此不再是难事！你也可以加入「壹周约行」，和校友一起约吃饭运动看电影打游戏……打破你有限的人际圈，结识更多新同学~先戳这里http://a.app.qq.com/o/simple.jsp?pkgname=com.xiaoshangxing 
+下载【校上行】，在校上行APP里等待那个和你关键词一样的旅伴，开启你们的18号巴士之旅吧！
+你也可以先回复“看关键词” 看看别人的关键词。系统将随机为你发送五个他人的关键词，你可以选择一个你感兴趣的同学，去校上行跟他say hi哦~
+`;}
+}
 
 function replyAdd(reply, user) {
     user['step'] ++;
@@ -129,7 +165,7 @@ async function pairKeywords(_user, fid) {
     var keyword = _user[KEYWORD],
         from = _user['id'];
     var pairContents = await Content.findAll({where:{keyword:keyword, status: 1}});
-    if (pairContents.length > 0) { //成功找到匹配对象
+    if (pairContents.length > 1) { //匹配必须有俩人以上，成功找到匹配对象
         var found = false;
         for (var i in pairContents) {
             var pairContent = pairContents[i];
@@ -155,6 +191,20 @@ async function pairKeywords(_user, fid) {
         console.log('匹配失败');
     }
     m.splice(fid, 1);
+}
+
+/* 洗牌算法 */
+Array.prototype.shuffle = function () {
+    var arr = this;
+    var input = [];
+
+    for (var i = 0, len = arr.length; i < len; i++) {
+        var j = Math.floor(Math.random() * arr.length);
+        input[i] = this[j];
+        arr.splice(j, 1);
+    }
+    console.log(input);
+    return input;
 }
 
 function replyMessage() {
@@ -185,9 +235,48 @@ function replyMessage() {
             isInLength = (content.length > 0 && content.length < 4),
             isNotSystemPhrase = systemPhrase.indexOf(content) === -1,
             index = l - 1,
-            reply = STEPS_REPLY[index];
-        if (l === 1) {
-            if (content === '关键词') {
+            reply = STEPS_REPLY(_user, index);
+        //看关键词是优先级最高的
+        if (content === '看关键词') {
+            _user['look'] = true;
+            var list = await db.sequelize.query('SELECT DISTINCT(keyword) FROM contents');
+            var keyArr = list[0];
+            console.log(keyArr);
+            var keyArr_5 = [];
+            if (keyArr.length > 5) {
+                //从数组中随机选5个值
+                keyArr_5 = keyArr.shuffle().slice(0, 5);
+            } else {
+                keyArr_5 = keyArr;
+            }
+            var keyStr = '';
+            for (var i in keyArr_5) {
+                var keyword = keyArr_5[i]['keyword'];
+                if (keyword !== undefined) {
+                    keyStr += `${keyword}\n`;
+                }
+            }
+            _user['lookKeys'] = keyStr;
+            console.log(keyStr);
+            return keyStr;
+        } else if (_user['look'] === true && _user['lookKeys'].length > 0) {
+            if (!isNotSystemPhrase) return '';
+            //用户在看一看之后回复了关键词
+            var keyStr = _user['lookKeys'];
+            var keyArr = keyStr.split('\n');
+            console.log(keyArr);
+            delete _user['look'];
+            delete _user['lookKeys'];
+            if (keyArr.indexOf(content) !== -1) {
+                //展示关键词的1, 2, 3
+                User.hasMany(Content, {foreignKey: 'fromUserName', sourceKey: 'fromUserName'});
+                var key = await Content.findOne({where:{keyword:content}});
+                var user = await User.findOne({where:{fromUserName:key.fromUserName}});
+                return `关键词：${key.keyword}\n描述：${key.descr}\n姓名：${user.user_name}`;
+            }
+            return '';
+        } else if (l === 1) {
+            if (content === '巴士') {
                 return replyAdd(reply, _user)
             }
             return '';
@@ -198,13 +287,18 @@ function replyMessage() {
             else if (l === 4) prop = DESCRIPTION;
             else prop = USERNAME;
             _user[prop] = content;
+            reply = STEPS_REPLY(_user, index);
             return replyAdd(reply, _user);
         } else if (!isInLength && isNotSystemPhrase && l === 2) {
             return '关键词不超过3个字';
         } else if ((l === 3 || l === 5 || l === 7)) {
             if (content === '2') {
                 //修改
-                return replyMinus('请重新输入', _user);
+                var field = '';
+                if (l === 3) field = '【关键词】';
+                else if (l === 5) field = '【关键词描述】';
+                else  field = '【姓名】+【学院与专业】';
+                return replyMinus(`重新输入你的${field}吧`, _user);
             } else if (content === '1') {
                 if (l === 3) {  //存储关键词
                     var rep = await updateUserContent(_user, KEYWORD);
@@ -230,7 +324,7 @@ function replyMessage() {
             }
         } else {
             var _step = l-2 < 0 ? 0 : l-2;
-            return `请回复问题'${STEPS_REPLY[_step]}'`;
+            return `请回复'${STEPS_REPLY(_user, _step)}'`;
         }
     };
 }
