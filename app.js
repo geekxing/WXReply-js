@@ -6,8 +6,6 @@ const controller = require('./controller');
 
 const wechat = require('co-wechat');
 
-const api = require('wechat-api');
-
 const config = require('./config');
 
 const message = require('./wechat/messages');
