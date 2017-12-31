@@ -86,10 +86,14 @@ async function updateUserContent(_user, k) {
             var exist = false;
             for (var i in contents) {
                 var obj = contents[i];
-                if (obj[k] === word && obj[DESCRIPTION].length > 0 && obj['status'] === 2) {
-                    console.log(flag);
-                    exist =true;
-                    return '该关键词重复或已成功匹配，请重新输入';
+                if (obj[k] === word && obj[DESCRIPTION].length > 0) {
+                    exist = true;
+                    if (obj['status'] === 2) {
+                        console.log(flag);
+                        return '该关键词重复或已成功匹配，请重新输入';
+                    } else if (obj['status'] === 1) {
+                        break;
+                    }
                 } else if ((obj[k] === word && obj[DESCRIPTION].length <= 0)) {
                     exist = true;
                     break;
