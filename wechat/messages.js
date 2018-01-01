@@ -244,7 +244,7 @@ function replyMessage() {
             _user['step'] = 1;
             delete _user['look'];
             delete _user['lookKeys'];
-            return replyAdd(STEPS_REPLY(_user, index), _user)
+            return replyAdd(STEPS_REPLY(_user, 0), _user)
         } else if (content === '看关键词') {
             _user['look'] = true;
             var list = await db.sequelize.query('SELECT DISTINCT(keyword) FROM contents');

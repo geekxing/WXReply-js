@@ -29,8 +29,8 @@
       <file leaf-file-name="messages.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wechat/messages.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-34">
-              <caret line="246" column="43" lean-forward="false" selection-start-line="246" selection-start-column="43" selection-end-line="246" selection-end-column="43" />
+            <state relative-caret-position="86">
+              <caret line="241" column="21" lean-forward="true" selection-start-line="241" selection-start-column="21" selection-end-line="241" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -78,6 +78,7 @@
       <find>STEP</find>
       <find>关键词</find>
       <find>Content</find>
+      <find>STEPS_REPLY</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -224,12 +225,12 @@
       <option name="presentableId" value="Default" />
       <updated>1513862703987</updated>
       <workItem from="1513862705228" duration="26364000" />
-      <workItem from="1514459614641" duration="79021000" />
+      <workItem from="1514459614641" duration="79234000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105385000" />
+    <option name="totallyTimeSpent" value="105598000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -628,8 +629,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wechat/messages.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="246" column="43" lean-forward="false" selection-start-line="246" selection-start-column="43" selection-end-line="246" selection-end-column="43" />
+        <state relative-caret-position="86">
+          <caret line="241" column="21" lean-forward="true" selection-start-line="241" selection-start-column="21" selection-end-line="241" selection-end-column="21" />
           <folding />
         </state>
       </provider>
