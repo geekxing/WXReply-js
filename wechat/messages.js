@@ -28,6 +28,7 @@ function STEPS_REPLY(_user, index) {
 为了找到你这次旅途的旅伴
 快来输入你的【关键词】吧~
 例如：减肥/考研/健身/考雅思/学习/变帅（不可以超过三个字哦）
+选择一个你喜欢的关键词去校上行APP里和TA say hi 吧或者发送【看关键词】换一组
 `;} else if (index === 1) {
         return `你的关键词是：
         
@@ -230,6 +231,9 @@ function replyMessage() {
             } else {
                 l = _user['step'];
             }
+        }
+        if (message.Content === undefined) {
+            return '';
         }
         var content = message.Content,
             isInLength = (content.length > 0 && content.length < 4),
