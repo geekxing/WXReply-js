@@ -241,7 +241,9 @@ function replyMessage() {
             reply = STEPS_REPLY(_user, index);
         //看关键词是优先级最高的
         if (content === '巴士') {
-            _user = {"id":from, 'step':1};
+            _user['step'] = 1;
+            delete _user['look'];
+            delete _user['lookKeys'];
             return replyAdd(reply, _user)
         } else if (content === '看关键词') {
             _user['look'] = true;
