@@ -27,25 +27,25 @@ function STEPS_REPLY(_user, index) {
         return `欢迎你乘坐18号巴士！
 为了找到你这次旅途的旅伴
 快来输入你的【关键词】吧~
-例如：减肥/考研/健身/考雅思/学习/变帅（不可以超过三个字哦）
-`;} else if (index === 1) {
+例如：减肥/考研/健身/考雅思/学习/变帅（不可以超过三个字哦）`;
+    } else if (index === 1) {
         return `你的关键词是：
         
 ${keyword}
 
 确定 回复【1】	修改 回复【2】
-注意：一旦确定，将无法再次修改哦！
-`;} else if (index === 2) {
+注意：一旦确定，将无法再次修改哦！`;
+    } else if (index === 2) {
         return `为什么以  ${keyword}  作为你的2018关键词呢？
 描述一下它吧~（建议50~200字）
-你详尽丰富的描述可以让Ta对你的了解更多呦~
-`;} else if (index === 3) {
+你详尽丰富的描述可以让Ta对你的了解更多呦~`;
+    } else if (index === 3) {
         return `你的【关键词描述】：
 
 ${_user[DESCRIPTION]}
 
-确认 回复【1】	修改 回复【2】
-`;} else if (index === 4) {
+确认 回复【1】	修改 回复【2】`;
+    } else if (index === 4) {
         return `输入你的【姓名】+【学院】+【专业】吧~
 注意：一定是真实姓名，对方才可以找到你哦~`;
     } else if (index === 5) {
@@ -53,14 +53,14 @@ ${_user[DESCRIPTION]}
         
 ${_user[USERNAME]}
 
-确认 回复【1】 修改 回复【2】
-`;} else if (index === 6) {
+确认 回复【1】 修改 回复【2】`;
+    } else if (index === 6) {
         return `车票已经预定成功，系统正在为你匹配旅伴中，请耐心等候Ta的出现哦！
 为了确保所有的参与同学均是江南大学学生，只有使用校上行APP，才可以找到彼此哦！
 【校上行】是由江南大学在校生自主开发的一款社交APP，目前只对江南大学用户开放哦！在这里，你可以结识全校的任何一位同学，「校友通讯录」中精细分类学院、专业、年级，让你校内找人从此不再是难事！你也可以加入「壹周约行」，和校友一起约吃饭运动看电影打游戏……打破你有限的人际圈，结识更多新同学~先戳这里http://a.app.qq.com/o/simple.jsp?pkgname=com.xiaoshangxing 
 下载【校上行】，在校上行APP里等待那个和你关键词一样的旅伴，开启你们的18号巴士之旅吧！
-你也可以先回复“看关键词” 看看别人的关键词。系统将随机为你发送五个他人的关键词，你可以选择一个你感兴趣的同学，去校上行跟他say hi哦~
-`;}
+你也可以先回复“看关键词” 看看别人的关键词。系统将随机为你发送五个他人的关键词，你可以选择一个你感兴趣的同学，去校上行跟他say hi哦~`;
+    }
 }
 
 function replyAdd(reply, user) {
@@ -240,7 +240,10 @@ function replyMessage() {
             index = l - 1,
             reply = STEPS_REPLY(_user, index);
         //看关键词是优先级最高的
-        if (content === '看关键词') {
+        if (content === '巴士') {
+            _user['step'] = 1;
+            return replyAdd(reply, _user)
+        } else if (content === '看关键词') {
             _user['look'] = true;
             var list = await db.sequelize.query('SELECT DISTINCT(keyword) FROM contents');
             var keyArr = list[0];
@@ -280,9 +283,6 @@ function replyMessage() {
             }
             return '';
         } else if (l === 1) {
-            if (content === '巴士') {
-                return replyAdd(reply, _user)
-            }
             return '';
         } else if ((isInLength && isNotSystemPhrase && l === 2) || (content.length>0 && isNotSystemPhrase && (l === 4 || l === 6))) {
             //关键词长度不超过3个字，且不能是系统词汇
