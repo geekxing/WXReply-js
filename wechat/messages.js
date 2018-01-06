@@ -168,8 +168,37 @@ function replyMessage() {
             isNotSystemPhrase = systemPhrase.indexOf(content) === -1,
             index = l - 1,
             reply = STEPS_REPLY(_user, index);
-        //看关键词是优先级最高的
-        if (content === '同桌') {
+        // Part 1
+        if (l === 1 && content === '任务') {
+            var now = new Date();
+            console.log(now);
+            var day = now.getDay();
+            if (day === 1) {
+                return '任务一';
+            } else if (day === 2) {
+                return '任务二';
+            } else if (day === 3) {
+                return '任务三';
+            } else if (day === 4) {
+                return '任务四';
+            } else if (day === 5) {
+                return '任务五';
+            } else  {
+                return '今天暂无任务';
+            }
+        }
+        // Part 2
+        else if (l === 1) {
+            if (content === '举报') {
+                _user['jubao'] = 1;
+                return '请回复【对方名字】+【聊天截图/经过描述】完成举报操作';
+            } else if (_user['jubao'] === 1) {
+                delete _user['jubao'];
+                return '系统已经收到你的举报信息啦。很遗憾给你带来不好的体验，一经核实我们将会拒绝他参与校上行后续的所有活动！';
+            }
+        }
+        // Part 3
+        else if (content === '同桌') {
             _user['step'] = 1;
             return replyAdd(STEPS_REPLY(_user, 0), _user)
         } else if (l === 1) {
@@ -181,7 +210,7 @@ function replyMessage() {
                 return alert;
             } else if (l === 4 && (content !== '男生' && content !== '女生')) {
                 return alert;
-            } else if (l === 6 && (content < 10 || content > 800)) {
+            } else if (l === 6 && (content.length < 10 || content.length > 800)) {
                 return alert;
             }
             var prop = propNameByStep(l);
