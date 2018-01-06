@@ -22,7 +22,7 @@ let systemPhrase = ['同桌','确认','修改','1','2'],
 var m = [];
 
 function STEPS_REPLY(_user, index) {
-    var keyword = _user[KEYWORD];
+    var keyword = _user[USERINFO];
     if (index === 0) {
         return `终于等到你
 我的江南同桌
