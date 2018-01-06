@@ -6,7 +6,7 @@ const config = require('../config');
 const db = require('../db');
 
 let systemPhrase = ['同桌','确认','修改','1','2'],
-    USERINFO = 'user_info',
+    USERINFO = 'user_name',
     SEX = 'sex_input',
     SELFDESCR = 'self_descr',
     ERROR_RESTART = '出错啦！请重新开始...';
@@ -33,7 +33,7 @@ function STEPS_REPLY(_user, index) {
 注意：一定要是真实姓名哦，不然你的同桌是找不到你的哦`;
     } else if (index === 1) {
         var uinfo = _user[USERINFO];
-        return `A．	你的【姓名】+【学院】+【专业】是：
+        return `你的【姓名】+【学院】+【专业】是：
 
 ${uinfo}
 
@@ -43,8 +43,7 @@ ${uinfo}
         return `你是男孩子还是女孩子呢
 我们会给你匹配一个异性同桌喔
 快来输入你的【性别】吧
-例如：男生/女生
-;`
+例如：男生/女生;`
     } else if (index === 3) {
         return `你的【性别】：
 
@@ -90,8 +89,7 @@ function replyMinus(reply, user) {
 }
 
 function findByUid(from, array) {
-    var index,
-        item;
+    var index, item;
     for (var i in array) {
         var p = array[i];
         if (p['id'] === from) {
