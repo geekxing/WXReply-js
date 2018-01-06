@@ -78,6 +78,14 @@ function propNameByStep(l) {
     return prop;
 }
 
+function propLengthLimitAlertByStep(l) {
+    var propLengthLimitAlert = '';
+    if (l === 2) propLengthLimitAlert = `长度不能超过50个字`;
+    else if (l === 4) propLengthLimitAlert = `请输入男生/女生`;
+    else propLengthLimitAlert = `长度在10-800字之间`;
+    return propLengthLimitAlert;
+}
+
 function replyAdd(reply, user) {
     user['step'] ++;
     return reply;
@@ -168,6 +176,14 @@ function replyMessage() {
             return '';
         } else if (content.length>0 && isNotSystemPhrase && (l === 2 || l === 4 || l === 6)) {
             //关键词长度不超过3个字，且不能是系统词汇
+            var alert = propLengthLimitAlertByStep(l);
+            if (l === 2 && content.length > 50) {
+                return alert;
+            } else if (l === 4 && (content !== '男生' && content !== '女生')) {
+                return alert;
+            } else if (l === 6 && (content < 10 || content > 800)) {
+                return alert;
+            }
             var prop = propNameByStep(l);
             _user[prop] = content;
             reply = STEPS_REPLY(_user, index);
