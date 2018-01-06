@@ -5,8 +5,8 @@ const API = require('co-wechat-api');
 const config = require('../config');
 const db = require('../db');
 
-let systemPhrase = ['同桌','确认','修改','1','2'],
-    USERINFO = 'user_info',
+let systemPhrase = ['巴士','确认','修改','1','2'],
+    KEYWORD = 'keyword',
     DESCRIPTION = 'descr',
     USERNAME = 'name',
     ERROR_RESTART = '出错啦！请重新开始...';
@@ -24,14 +24,10 @@ var m = [];
 function STEPS_REPLY(_user, index) {
     var keyword = _user[KEYWORD];
     if (index === 0) {
-        return `终于等到你
-我的江南同桌
-在这里~
-你可以匹配到你的江南大学专属同桌喔
-为了能找到你的同桌
-快来输入你的【姓名】+【学院】+【专业】吧
-例如：王大锤+设计学院+视觉传达
-注意：一定要是真实姓名哦，不然你的同桌是找不到你的哦`;
+        return `欢迎你乘坐18号巴士！
+为了找到你这次旅途的旅伴
+快来输入你的【关键词】吧~
+例如：减肥/考研/健身/考雅思/学习/变帅（不可以超过三个字哦）`;
     } else if (index === 1) {
         return `你的关键词是：
         
@@ -105,16 +101,96 @@ async function getUser(openid) {
 
 async function updateUserContent(_user, k) {
     // 把数据写入数据库操作
-    var value = _user[k];
+    var flag = '';
+    var word = _user[k];
     var from = _user['id'];
     var user = await User.findOne({where:{fromUserName:from}});
+    User.hasMany(Content, {foreignKey: 'fromUserName', sourceKey: 'fromUserName'});
     if (!user) {
-        user = await User.create({fromUserName:from});
-        user[k] = value;
+        var info = await getUser(from);
+        info['fromUserName'] = from;
+        var obj = {};
+        obj[k] = word;
+        info['contents'] = [obj];
+        user = await User.create(info, {include: [Content]});
+        await user.save();
     } else  {
-        user[k] = value;
+        var contents = await Content.findAll({where:{fromUserName:from}});
+        var info;
+        if (k === KEYWORD) {  //插入关键词
+            info = await getUser(from);
+            var exist = false;
+            for (var i in contents) {
+                var obj = contents[i];
+                if (obj[k] === word && obj[DESCRIPTION].length > 0) {
+                    exist = true;
+                    if (obj['status'] === 2) {
+                        console.log(flag);
+                        return '该关键词重复或已成功匹配，请重新输入';
+                    } else if (obj['status'] === 1) {
+                        break;
+                    }
+                } else if ((obj[k] === word && obj[DESCRIPTION].length <= 0)) {
+                    exist = true;
+                    break;
+                }
+            }
+            if (!exist || contents.length === 0) {
+                console.log(`增加新的关键词'${word}'`);
+                var obj = {};
+                obj[k] = word;
+                obj['fromUserName'] = from;
+                var content = await Content.create(obj);
+                contents.push(content);
+            }
+            info['contents'] = contents;
+            await user.update(info);
+        } else if (k === DESCRIPTION) {  //更新描述
+            var index = contents.length - 1;
+            if (index < 0) {
+                flag = ERROR_RESTART;
+                return flag;
+            }
+            var obj = contents[index];
+            obj[k] = word;
+            await obj.save();
+            contents[index] = obj;
+            await user.update({contents: contents});
+        }
     }
-    await user.save();
+}
+
+async function pairKeywords(_user, fid) {
+    //开始匹配数据库
+    var keyword = _user[KEYWORD],
+        from = _user['id'];
+    var pairContents = await Content.findAll({where:{keyword:keyword, status: 1}});
+    if (pairContents.length > 1) { //匹配必须有俩人以上，成功找到匹配对象
+        var found = false;
+        for (var i in pairContents) {
+            var pairContent = pairContents[i];
+            if (pairContent.fromUserName !== from) {
+                var pairA = await User.findOne({where:{fromUserName:from}});
+                var pairB = await User.findOne({where:{fromUserName:pairContent.fromUserName}});
+                var pair = await Pair.create({pairA_name: pairA.nickname, pairB_name: pairB.nickname, keyword: keyword});
+                await pair.save();
+                pairContent.status = 2;
+                await pairContent.save();
+                var myPair = await Content.findOne({where:{keyword:keyword, fromUserName: from}});
+                myPair.status = 2;
+                await myPair.save();
+                console.log(`成功匹配'${pairA.nickname}'和'${pairB.nickname}'的关键词'${keyword}'`);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            console.log('匹配失败');
+        }
+    } else {
+        console.log('匹配失败');
+    }
+    m.splice(fid, 1);
 }
 
 /* 洗牌算法 */
@@ -164,20 +240,63 @@ function replyMessage() {
             index = l - 1,
             reply = STEPS_REPLY(_user, index);
         //看关键词是优先级最高的
-        if (content === '同桌') {
+        if (content === '巴士') {
             _user['step'] = 1;
+            delete _user['look'];
+            delete _user['lookKeys'];
             return replyAdd(STEPS_REPLY(_user, 0), _user)
+        } else if (content === '看关键词') {
+            _user['look'] = true;
+            var list = await db.sequelize.query('SELECT DISTINCT(keyword) FROM contents');
+            var keyArr = list[0];
+            console.log(keyArr);
+            var keyArr_5 = [];
+            if (keyArr.length > 5) {
+                //从数组中随机选5个值
+                keyArr_5 = keyArr.shuffle().slice(0, 5);
+            } else {
+                keyArr_5 = keyArr;
+            }
+            var keyStr = '';
+            for (var i in keyArr_5) {
+                var keyword = keyArr_5[i]['keyword'];
+                if (keyword !== undefined) {
+                    keyStr += `${keyword}\n`;
+                }
+            }
+            keyStr += '\n选择一个你喜欢的关键词去校上行APP里和TA say hi 吧或者发送【看关键词】换一组'
+            _user['lookKeys'] = keyStr;
+            console.log(keyStr);
+            return keyStr;
+        } else if (_user['look'] === true && _user['lookKeys'].length > 0) {
+            if (!isNotSystemPhrase) return '';
+            //用户在看一看之后回复了关键词
+            var keyStr = _user['lookKeys'];
+            var keyArr = keyStr.split('\n');
+            console.log(keyArr);
+            delete _user['look'];
+            delete _user['lookKeys'];
+            if (keyArr.indexOf(content) !== -1) {
+                //展示关键词的1, 2, 3
+                User.hasMany(Content, {foreignKey: 'fromUserName', sourceKey: 'fromUserName'});
+                var key = await Content.findOne({where:{keyword:content}});
+                var user = await User.findOne({where:{fromUserName:key.fromUserName}});
+                return `关键词：${key.keyword}\n描述：${key.descr}\n姓名：${user.user_name}`;
+            }
+            return '';
         } else if (l === 1) {
             return '';
-        } else if (content.length>0 && isNotSystemPhrase && (l === 2 || l === 4 || l === 6)) {
+        } else if ((isInLength && isNotSystemPhrase && l === 2) || (content.length>0 && isNotSystemPhrase && (l === 4 || l === 6))) {
             //关键词长度不超过3个字，且不能是系统词汇
             var prop = '';
-            if (l === 2) prop = USERINFO;
+            if (l === 2) prop = KEYWORD;
             else if (l === 4) prop = DESCRIPTION;
             else prop = USERNAME;
             _user[prop] = content;
             reply = STEPS_REPLY(_user, index);
             return replyAdd(reply, _user);
+        } else if (!isInLength && isNotSystemPhrase && l === 2) {
+            return '关键词不超过3个字';
         } else if ((l === 3 || l === 5 || l === 7)) {
             if (content === '2') {
                 //修改
@@ -188,7 +307,10 @@ function replyMessage() {
                 return replyMinus(`重新输入你的${field}吧`, _user);
             } else if (content === '1') {
                 if (l === 3) {  //存储关键词
-                    await updateUserContent(_user, USERINFO);
+                    var rep = await updateUserContent(_user, KEYWORD);
+                    if (rep !== undefined && rep.length > 0) {
+                        return replyMinus(rep, _user);
+                    }
                 } else if (l === 5) { //存储关键词描述
                     var rep = await updateUserContent(_user, DESCRIPTION);
                     if (rep !== undefined && rep.length > 0) {
@@ -199,6 +321,7 @@ function replyMessage() {
                     var user = await User.findOne({where: {fromUserName: from}});
                     user.user_name = _user[USERNAME];
                     await user.save();
+                    await pairKeywords(_user, fid);
                 }
                 console.log('开始下一个描述');
                 return replyAdd(reply, _user);
