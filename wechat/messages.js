@@ -1,9 +1,6 @@
 const User = require('../models/User');
-const Content = require('../models/Content');
-const Pair = require('../models/Pair');
 const API = require('co-wechat-api');
 const config = require('../config');
-const db = require('../db');
 
 let systemPhrase = ['同桌','确认','修改','1','2'],
     USERINFO = 'user_name',
@@ -188,14 +185,12 @@ function replyMessage() {
             }
         }
         // Part 2
-        else if (l === 1) {
-            if (content === '举报') {
-                _user['jubao'] = 1;
-                return '请回复【对方名字】+【聊天截图/经过描述】完成举报操作';
-            } else if (_user['jubao'] === 1) {
-                delete _user['jubao'];
-                return '系统已经收到你的举报信息啦。很遗憾给你带来不好的体验，一经核实我们将会拒绝他参与校上行后续的所有活动！';
-            }
+        else if (l === 1 && content === '举报') {
+            _user['jubao'] = 1;
+            return '请回复【对方名字】+【聊天截图/经过描述】完成举报操作';
+        } else if (l === 1 && _user['jubao'] === 1) {
+            delete _user['jubao'];
+            return '系统已经收到你的举报信息啦。很遗憾给你带来不好的体验，一经核实我们将会拒绝他参与校上行后续的所有活动！';
         }
         // Part 3
         else if (content === '同桌') {
