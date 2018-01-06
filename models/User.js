@@ -10,7 +10,7 @@ const User = db.defineModel('users', {
     sex: { type: db.BIGINT, defaultValue: 1 },
     sex_input: { type: db.STRING(10), defaultValue: '' },
     user_info: { type: db.STRING(100), defaultValue: '' },
-    self_desr: { type: db.TEXT, defaultValue: '' },
+    self_descr: { type: db.TEXT, defaultValue: '' },
     userType: { type: db.BIGINT, defaultValue: 1 }
 });
 

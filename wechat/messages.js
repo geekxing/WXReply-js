@@ -8,7 +8,7 @@ const db = require('../db');
 let systemPhrase = ['同桌','确认','修改','1','2'],
     USERINFO = 'user_info',
     SEX = 'sex_input',
-    SELFDESCR = 'self_desr',
+    SELFDESCR = 'self_descr',
     ERROR_RESTART = '出错啦！请重新开始...';
 
 // { ToUserName: 'gh_037eaffcc126',
