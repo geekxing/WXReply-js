@@ -223,6 +223,9 @@ function replyMessage() {
             } else if (content === '1') {
                 var prop = propNameByStep(l-1);
                 await updateUserContent(_user, prop);
+                if (l === 7) {
+                    m.splice(fid, 1);
+                }
                 console.log('开始下一个描述');
                 return replyAdd(reply, _user);
             } else {
