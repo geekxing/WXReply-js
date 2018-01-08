@@ -164,9 +164,14 @@ function replyMessage() {
         var content = message.Content,
             isNotSystemPhrase = systemPhrase.indexOf(content) === -1,
             index = l - 1,
+            wenxinTip = '活动报名已截止，请持续关注校上行公众号后续精彩内容',
             reply = STEPS_REPLY(_user, index);
         // Part 1
         if (l === 1 && content === '任务') {
+            var user = await User.findOne({where:{fromUserName:from}});
+            if (!user) {
+                return wenxinTip;
+            }
             var now = new Date();
             console.log(now);
             var day = now.getDay();
@@ -230,7 +235,7 @@ function replyMessage() {
         // Part 3
         else if (content === '同桌') {
             _user['step'] = 1;
-            return replyAdd(STEPS_REPLY(_user, 0), _user)
+            return wenxinTip;
         } else if (l === 1) {
             return '';
         } else if (content.length>0 && isNotSystemPhrase && (l === 2 || l === 4 || l === 6)) {

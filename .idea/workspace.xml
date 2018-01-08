@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b3b6862-55d0-4d83-8e57-a950b8721e08" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/wechat/messages.js" afterPath="$PROJECT_DIR$/wechat/messages.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -30,8 +29,8 @@
       <file leaf-file-name="messages.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wechat/messages.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-216">
-              <caret line="214" column="5" lean-forward="true" selection-start-line="214" selection-start-column="5" selection-end-line="214" selection-end-column="5" />
+            <state relative-caret-position="290">
+              <caret line="172" column="27" lean-forward="false" selection-start-line="172" selection-start-column="27" selection-end-line="172" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -136,8 +135,8 @@
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="259" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="132" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="877" />
@@ -229,15 +228,15 @@
       <workItem from="1514459614641" duration="80591000" />
       <workItem from="1514789076957" duration="2017000" />
       <workItem from="1515140404153" duration="3121000" />
-      <workItem from="1515383206069" duration="100000" />
+      <workItem from="1515383206069" duration="832000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118074000" />
+    <option name="totallyTimeSpent" value="118806000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="8" y="23" width="1440" height="877" extended-state="6" />
+    <frame x="132" y="23" width="1440" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -538,8 +537,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wechat/messages.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-216">
-          <caret line="214" column="5" lean-forward="true" selection-start-line="214" selection-start-column="5" selection-end-line="214" selection-end-column="5" />
+        <state relative-caret-position="290">
+          <caret line="172" column="27" lean-forward="false" selection-start-line="172" selection-start-column="27" selection-end-line="172" selection-end-column="27" />
           <folding />
         </state>
       </provider>
