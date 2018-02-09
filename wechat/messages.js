@@ -5,6 +5,11 @@ const API = require('co-wechat-api');
 const config = require('../config');
 const Op = require('../db').Op;
 
+const IDX_K = 'K',
+      IDX_L = 'L',
+      IDX_M = 'M',
+      IDX_N = 'N';
+
 let systemPhrase = ['打电话', '听电话', '确认','修改','1','2'],
     MEDIA = 'media_id',
     MEDIA_DESCR = 'descr',
@@ -26,38 +31,96 @@ let m = [];
 User.belongsToMany(Voice, { through: UserVoices, foreignKey: 'fromUserName'});
 Voice.belongsToMany(User, { through: UserVoices, foreignKey: 'media_id'});
 
+// 打电话的回复
 function STEPS_REPLY(_user, index) {
     if (index === 0) {
-        return `请录入你的声音`;
+        return `你好，同学
+这是江南大学「校园电话亭」
+谢谢你愿意和我分享一段声音
+现在就请你拿起手机收集吧
+
+鼠标声音、键盘声、电视机声、开门声、车流声…
+亦或是你的一些想法~
+
+注意语音时长不要超过59s~`;
     } else if (index === 1) {
-        return `声音 
-${_user[MEDIA]}
-确定 回复【1】	修改 回复【2】`;
+        return `你确定好这就是你要分享的声音了吗
+确定请回复“1”
+需要修改请回复“2”`;
     } else if (index === 2) {
-        return `请输入一段【声音描述】吧`
+        return `校园电话亭已经收到你的声音啦
+现在，你可以给这段声音加一段描述
+(注意4-200字的字数限制哦)`
     } else if (index === 3) {
-        return `你的【声音描述】：
+        return `你的描述是：
 
 ${_user[MEDIA_DESCR]}
 
-确认 回复【1】	修改 回复【2】`;
+你确定好这段描述作为你声音的名片了吗 
+确定请回复“1”
+需要修改请回复“2”`;
     } else if (index === 4) {
-        return `请输入【个人信息】`;
+        return `好喜欢你的这段声音啊!
+我想你也一定是个有趣的人
+留下你的学院专业还有姓名吧
+
+例如：
+设计学院 视觉传达 王汤姆
+
+这样喜欢你这段语音的同学
+就可以通过校上行APP找到你啦~`;
     } else if (index === 5) {
-        return `你的自我介绍
+        return `你填写的信息是：
 
 ${_user[USERINFO]}
 
-确认 回复【1】 修改 回复【2】`;
+你确定这是你正确的信息吗
+别让“循声而来”的小哥哥/小姐姐失望呀`;
     } else if (index === 6) {
-        return `第三期活动
-【校上行】是由江南大学在校生自主开发的一款社交APP！在这里，你可以结识全校的任何一位同学，「校友通讯录」中精细分类学院、专业、年级，让你校内找人从此不再是难事！你也可以加入「壹周约行」，和校友一起约吃饭运动看电影打游戏……打破你有限的人际圈，结识更多新同学~先戳这里http://a.app.qq.com/o/simple.jsp?pkgname=com.xiaoshangxing 
-下载【校上行】，在校上行APP里等待你的江南同桌出现吧！`;
+        return `你已经成功分享这段声音啦
+短短一段声波又会钻入谁的耳朵，触动谁的内心呢
+如果听到你这段语音的同学对你感兴趣的话，Ta会通过校上行APP找到你哦~
+你可以先下载校上行APP，并且实名认证，等待着Ta的出现…
+
+是由江南大学在校生自主开发的一款社交APP！在这里，你可以结识全校的任何一位同学，「校友通讯录」中精细分类学院、专业、年级，让你校内找人从此不再是难事！你也可以加入「壹周约行」，和校友一起约吃饭运动看电影打游戏……打破你有限的人际圈，结识更多新同学~先戳这里
+
+下载链接： http://a.app.qq.com/o/simple.jsp?pkgname=com.xiaoshangxing`;
     }
 }
 
-function receiveCallReply(num) {
-    return `这是第${num}通`;
+// 听电话的回复
+function receiveCallReply(idx, obj) {
+    if (idx === IDX_K) {
+        return `这是你收到的第${obj}段声音
+回复“听电话”你将获取下一段声音
+回复 ${obj} 你将获得这段声音的主人信息
+你最多可以收听3段声音，获取1位主人的信息`;
+    } else if (idx === IDX_L) {
+        return `Ta的信息：
+
+${user.user_name}
+
+有趣的灵魂不多 ，那就别错过
+快记下感兴趣的声音的主人信息
+使用「校上行」APP去「校友通讯录」里找到他吧！
+下载链接： http://a.app.qq.com/o/simple.jsp?pkgname=com.xiaoshangxing`;
+    }
+    return '';
+}
+
+function jubaoReply(idx, obj) {
+    if (idx === IDX_M) {
+        return `空音？涉嫌黄赌毒？太好听以致耳朵意外怀孕？……
+回复 1 或者 2 或者 3 举报你所听到的第几通声音
+例如你想举报第1通电话
+回复数字1即可`;
+    } else if (idx === IDX_N) {
+        return `亲爱的同学，我们已收到你的举报
+我们将认真审核，严肃处理               
+对你造成困扰我们在此诚挚道歉
+祝你在这里玩得开心~`;
+    }
+    return '';
 }
 
 function propNameByStep(l) {
@@ -70,9 +133,8 @@ function propNameByStep(l) {
 
 function propLengthLimitAlertByStep(l) {
     let propLengthLimitAlert = '';
-    if (l === 2) propLengthLimitAlert = `长度不能超过50个字`;
-    else if (l === 4) propLengthLimitAlert = `请输入男生/女生`;
-    else propLengthLimitAlert = `长度在10-800字之间`;
+    if (l === 4) propLengthLimitAlert = `描述长度在4-200字之间`;
+    else propLengthLimitAlert = ``;
     return propLengthLimitAlert;
 }
 
@@ -209,6 +271,11 @@ async function updateUserContent(_user, k) {
 async function receiveCall(_user) {
     let from = _user["id"];
     let user = await User.findOne({where:{fromUserName:from}});
+    if (!user) {
+        let info = await getUser(from);
+        info['fromUserName'] = from;
+        user = await User.create(info);
+    }
     // 从数据库中找该用户已经听过的所有录音的media_id s
     let listenedMedias = await user.getVoices({ where: { author:{[Op.ne]: from }}, attributes: ['media_id']});
     let listenedMediaIds = [];
@@ -235,7 +302,7 @@ async function receiveCall(_user) {
         if (voice.descr !== null) {
             await sendText(from, voice.descr);
         }
-        return receiveCallReply(listenedMediaIds.length + 1);
+        return receiveCallReply(IDX_K, listenedMediaIds.length + 1);
     }
     return '你已经听完了全部的录音';
 }
@@ -270,41 +337,52 @@ function replyMessage() {
         let content = message.MsgType === 'text' ? message.Content : '',
             isNotSystemPhrase = systemPhrase.indexOf(content) === -1,
             index = l - 1,
-            wenxinTip = '活动报名已截止，请持续关注校上行公众号后续精彩内容',
             reply = STEPS_REPLY(_user, index);
 
         // Part 1
-        if (l === 1 && content === '举报') {
+        if (content === '举报') {
+            delete _user['listen'];
             _user['jubao'] = 1;
-            return '请回复【对方名字】+【聊天截图/经过描述】完成举报操作';
-        } else if (l === 1 && _user['jubao'] === 1) {
-            delete _user['jubao'];
-            return '系统已经收到你的举报信息啦。很遗憾给你带来不好的体验，一经核实我们将会拒绝他参与校上行后续的所有活动！';
+            return jubaoReply(IDX_M);
+        } else if (_user['jubao'] === 1 && ['1', '2', '3'].indexOf(content) !== -1) {
+            let listenedMedias = await user.getVoices({ where: { author:{[Op.ne]: from }}});
+            let index = ['1', '2', '3'].indexOf(content);
+            if (index+1 > listenedMedias.length) {
+                return '你还没有听这么多通电话呢';
+            } else {
+                delete _user['jubao'];
+                let voice = listenedMedias[index];
+                // 1 表示已经被举报的录音
+                voice.status = 1;
+                await voice.save();
+                return jubaoReply(IDX_N);
+            }
         }
         // Part 2
         if (content === '听电话') {
+            delete _user['jubao'];
             _user['listen'] = 1;
-            let res = await receiveCall(_user);
-            return res;
+            let recv = await receiveCall(_user);
+            return recv;
         } else if (_user['listen'] && content !== '打电话') {
             let listenedMedias = await user.getVoices({ where: { author:{[Op.ne]: from }}});
-            if (['1', '2', '3'].indexOf(content) != -1) {
+            if (['1', '2', '3'].indexOf(content) !== -1) {
                 let index = ['1', '2', '3'].indexOf(content);
                 if (index+1 > listenedMedias.length) {
-                    return receiveCallReply(index-1);
+                    return receiveCallReply(IDX_K, listenedMedias.length);
                 } else {
                     let voice = listenedMedias[index];
                     let user = voice.getUsers({where: {author: voice.author}});
-                    return `${user.user_name}  
-                               下载APP, "听电话继续"`;
+                    return receiveCallReply(IDX_L, user);
                 }
             } else {
-                return receiveCallReply(listenedMedias.length);
+                return receiveCallReply(IDX_K, listenedMedias.length);
             }
         }
         // Part 3
         if (content === '打电话') {
             delete _user['listen'];
+            delete _user['jubao'];
             _user['step'] = 1;
             return replyAdd(STEPS_REPLY(_user, 0), _user)
         } else if (l === 1) {
@@ -314,6 +392,10 @@ function replyMessage() {
             _user[prop] = message.MediaId;
             return replyAdd(STEPS_REPLY(_user, index), _user);
         } else if (content.length>0 && isNotSystemPhrase && (l === 4 || l === 6)) {
+            let alert = propLengthLimitAlertByStep(l);
+            if (l === 4 && (content.length < 2 || content.length > 500)) {
+                return alert;
+            }
             //关键词长度不超过3个字，且不能是系统词汇
             let prop = propNameByStep(l);
             _user[prop] = content;
@@ -323,10 +405,14 @@ function replyMessage() {
             if (content === '2') {
                 //修改
                 let field = '';
-                if (l === 3) field = '【声音】';
-                else if (l === 5) field = '【声音描述】';
-                else  field = '【个人信息】';
-                return replyMinus(`请重新输入${field}`, _user);
+                if (l === 3) field = '现在请重新分享给我们一段声音吧：';
+                    else if (l === 5) field = `现在有为这段声音想好一段描述作为它的名片了吗
+请重新输入吧：`;
+                else  field = `请重新填写你的学院专业姓名信息吧~
+
+例如：
+设计学院 视觉传达 王汤姆`;
+                return replyMinus(field, _user);
             } else if (content === '1') {
                 let prop = propNameByStep(l-1);
                 if (l === 3) {

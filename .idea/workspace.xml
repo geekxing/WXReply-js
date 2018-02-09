@@ -2,112 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b3b6862-55d0-4d83-8e57-a950b8721e08" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/models/Voice.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/oldActivities/v2_deskmate.js" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/db.js" afterPath="$PROJECT_DIR$/db.js" />
-      <change beforePath="$PROJECT_DIR$/init-db.js" afterPath="$PROJECT_DIR$/init-db.js" />
-      <change beforePath="$PROJECT_DIR$/models/User.js" afterPath="$PROJECT_DIR$/models/User.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/LICENSE" afterPath="$PROJECT_DIR$/node_modules/@types/node/LICENSE" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/README.md" afterPath="$PROJECT_DIR$/node_modules/@types/node/README.md" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/index.d.ts" afterPath="$PROJECT_DIR$/node_modules/@types/node/index.d.ts" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/inspector.d.ts" afterPath="$PROJECT_DIR$/node_modules/@types/node/inspector.d.ts" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/package.json" afterPath="$PROJECT_DIR$/node_modules/@types/node/package.json" />
-      <change beforePath="$PROJECT_DIR$/node_modules/generic-pool/.travis.yml" afterPath="$PROJECT_DIR$/node_modules/generic-pool/.travis.yml" />
-      <change beforePath="$PROJECT_DIR$/node_modules/generic-pool/CHANGELOG.md" afterPath="$PROJECT_DIR$/node_modules/generic-pool/CHANGELOG.md" />
-      <change beforePath="$PROJECT_DIR$/node_modules/generic-pool/lib/Pool.js" afterPath="$PROJECT_DIR$/node_modules/generic-pool/lib/Pool.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/generic-pool/package.json" afterPath="$PROJECT_DIR$/node_modules/generic-pool/package.json" />
-      <change beforePath="$PROJECT_DIR$/node_modules/generic-pool/test/generic-pool-test.js" afterPath="$PROJECT_DIR$/node_modules/generic-pool/test/generic-pool-test.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/generic-pool/test/utils.js" afterPath="$PROJECT_DIR$/node_modules/generic-pool/test/utils.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/koa-router/README.md" afterPath="$PROJECT_DIR$/node_modules/koa-router/README.md" />
-      <change beforePath="$PROJECT_DIR$/node_modules/koa-router/history.md" afterPath="$PROJECT_DIR$/node_modules/koa-router/history.md" />
-      <change beforePath="$PROJECT_DIR$/node_modules/koa-router/lib/layer.js" afterPath="$PROJECT_DIR$/node_modules/koa-router/lib/layer.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/koa-router/lib/router.js" afterPath="$PROJECT_DIR$/node_modules/koa-router/lib/router.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/koa-router/package.json" afterPath="$PROJECT_DIR$/node_modules/koa-router/package.json" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/README.md" afterPath="$PROJECT_DIR$/node_modules/lodash/README.md" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/_addMapEntry.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/_addSetEntry.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/_baseClone.js" afterPath="$PROJECT_DIR$/node_modules/lodash/_baseClone.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/_baseMerge.js" afterPath="$PROJECT_DIR$/node_modules/lodash/_baseMerge.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/_baseMergeDeep.js" afterPath="$PROJECT_DIR$/node_modules/lodash/_baseMergeDeep.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/_cloneMap.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/_cloneSet.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/_initCloneArray.js" afterPath="$PROJECT_DIR$/node_modules/lodash/_initCloneArray.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/_initCloneByTag.js" afterPath="$PROJECT_DIR$/node_modules/lodash/_initCloneByTag.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/_isIndex.js" afterPath="$PROJECT_DIR$/node_modules/lodash/_isIndex.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/_stringToPath.js" afterPath="$PROJECT_DIR$/node_modules/lodash/_stringToPath.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/_unicodeWords.js" afterPath="$PROJECT_DIR$/node_modules/lodash/_unicodeWords.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/core.js" afterPath="$PROJECT_DIR$/node_modules/lodash/core.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/core.min.js" afterPath="$PROJECT_DIR$/node_modules/lodash/core.min.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/debounce.js" afterPath="$PROJECT_DIR$/node_modules/lodash/debounce.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/defaults.js" afterPath="$PROJECT_DIR$/node_modules/lodash/defaults.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/fp/_baseConvert.js" afterPath="$PROJECT_DIR$/node_modules/lodash/fp/_baseConvert.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/fp/_util.js" afterPath="$PROJECT_DIR$/node_modules/lodash/fp/_util.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/invert.js" afterPath="$PROJECT_DIR$/node_modules/lodash/invert.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/invertBy.js" afterPath="$PROJECT_DIR$/node_modules/lodash/invertBy.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/lodash.js" afterPath="$PROJECT_DIR$/node_modules/lodash/lodash.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/lodash.min.js" afterPath="$PROJECT_DIR$/node_modules/lodash/lodash.min.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lodash/package.json" afterPath="$PROJECT_DIR$/node_modules/lodash/package.json" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mime/CHANGELOG.md" afterPath="$PROJECT_DIR$/node_modules/mime/CHANGELOG.md" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mime/Mime.js" afterPath="$PROJECT_DIR$/node_modules/mime/Mime.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mime/README.md" afterPath="$PROJECT_DIR$/node_modules/mime/README.md" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mime/package.json" afterPath="$PROJECT_DIR$/node_modules/mime/package.json" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mime/src/README_js.md" afterPath="$PROJECT_DIR$/node_modules/mime/src/README_js.md" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mime/src/build.js" afterPath="$PROJECT_DIR$/node_modules/mime/src/build.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mime/src/test.js" afterPath="$PROJECT_DIR$/node_modules/mime/src/test.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mime/types/other.json" afterPath="$PROJECT_DIR$/node_modules/mime/types/other.json" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mime/types/standard.json" afterPath="$PROJECT_DIR$/node_modules/mime/types/standard.json" />
-      <change beforePath="$PROJECT_DIR$/node_modules/semver/README.md" afterPath="$PROJECT_DIR$/node_modules/semver/README.md" />
-      <change beforePath="$PROJECT_DIR$/node_modules/semver/bin/semver" afterPath="$PROJECT_DIR$/node_modules/semver/bin/semver" />
-      <change beforePath="$PROJECT_DIR$/node_modules/semver/package.json" afterPath="$PROJECT_DIR$/node_modules/semver/package.json" />
-      <change beforePath="$PROJECT_DIR$/node_modules/semver/range.bnf" afterPath="$PROJECT_DIR$/node_modules/semver/range.bnf" />
-      <change beforePath="$PROJECT_DIR$/node_modules/semver/semver.js" afterPath="$PROJECT_DIR$/node_modules/semver/semver.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/sequelize/README.md" afterPath="$PROJECT_DIR$/node_modules/sequelize/README.md" />
-      <change beforePath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/abstract/query-generator.js" afterPath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/abstract/query-generator.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/mssql/query-generator.js" afterPath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/mssql/query-generator.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/mssql/query.js" afterPath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/mssql/query.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/mysql/query-generator.js" afterPath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/mysql/query-generator.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/mysql/query-interface.js" afterPath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/mysql/query-interface.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/parserStore.js" afterPath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/parserStore.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/postgres/connection-manager.js" afterPath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/postgres/connection-manager.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/postgres/query-generator.js" afterPath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/postgres/query-generator.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/postgres/query.js" afterPath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/postgres/query.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/sqlite/query-generator.js" afterPath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/sqlite/query-generator.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/sqlite/query-interface.js" afterPath="$PROJECT_DIR$/node_modules/sequelize/lib/dialects/sqlite/query-interface.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/sequelize/lib/model.js" afterPath="$PROJECT_DIR$/node_modules/sequelize/lib/model.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/sequelize/lib/operators.js" afterPath="$PROJECT_DIR$/node_modules/sequelize/lib/operators.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/sequelize/lib/query-interface.js" afterPath="$PROJECT_DIR$/node_modules/sequelize/lib/query-interface.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/sequelize/lib/sequelize.js" afterPath="$PROJECT_DIR$/node_modules/sequelize/lib/sequelize.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/sequelize/lib/utils.js" afterPath="$PROJECT_DIR$/node_modules/sequelize/lib/utils.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/sequelize/package.json" afterPath="$PROJECT_DIR$/node_modules/sequelize/package.json" />
-      <change beforePath="$PROJECT_DIR$/node_modules/uuid/.eslintrc.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/uuid/AUTHORS" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/uuid/HISTORY.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/uuid/LICENSE.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/uuid/README.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/uuid/bin/uuid" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/uuid/index.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/uuid/lib/bytesToUuid.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/uuid/lib/rng-browser.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/uuid/lib/rng.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/uuid/lib/sha1-browser.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/uuid/lib/sha1.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/uuid/package.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/uuid/v1.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/uuid/v4.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/uuid/v5.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/validator/CHANGELOG.md" afterPath="$PROJECT_DIR$/node_modules/validator/CHANGELOG.md" />
-      <change beforePath="$PROJECT_DIR$/node_modules/validator/README.md" afterPath="$PROJECT_DIR$/node_modules/validator/README.md" />
-      <change beforePath="$PROJECT_DIR$/node_modules/validator/index.js" afterPath="$PROJECT_DIR$/node_modules/validator/index.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/validator/lib/alpha.js" afterPath="$PROJECT_DIR$/node_modules/validator/lib/alpha.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/validator/lib/isDate.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/node_modules/validator/lib/isMobilePhone.js" afterPath="$PROJECT_DIR$/node_modules/validator/lib/isMobilePhone.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/validator/lib/isPostalCode.js" afterPath="$PROJECT_DIR$/node_modules/validator/lib/isPostalCode.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/validator/package.json" afterPath="$PROJECT_DIR$/node_modules/validator/package.json" />
-      <change beforePath="$PROJECT_DIR$/node_modules/validator/validator.js" afterPath="$PROJECT_DIR$/node_modules/validator/validator.js" />
-      <change beforePath="$PROJECT_DIR$/node_modules/validator/validator.min.js" afterPath="$PROJECT_DIR$/node_modules/validator/validator.min.js" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change beforePath="$PROJECT_DIR$/models/Voice.js" afterPath="$PROJECT_DIR$/models/Voice.js" />
       <change beforePath="$PROJECT_DIR$/wechat/messages.js" afterPath="$PROJECT_DIR$/wechat/messages.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -135,8 +30,8 @@
       <file leaf-file-name="messages.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wechat/messages.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="291" column="32" lean-forward="false" selection-start-line="291" selection-start-column="32" selection-end-line="291" selection-end-column="32" />
+            <state relative-caret-position="171">
+              <caret line="350" column="38" lean-forward="true" selection-start-line="350" selection-start-column="38" selection-end-line="350" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -164,7 +59,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>data</find>
       <find>wereply</find>
       <find>appid</find>
       <find>Invalid</find>
@@ -194,6 +88,7 @@
       <find>Media</find>
       <find>getVoices</find>
       <find>LISTEN_LIST</find>
+      <find>receiveCallReply</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -226,9 +121,9 @@
         <option value="$PROJECT_DIR$/models/ListenerVoices.js" />
         <option value="$PROJECT_DIR$/models/Media.js" />
         <option value="$PROJECT_DIR$/db.js" />
-        <option value="$PROJECT_DIR$/models/Voice.js" />
         <option value="$PROJECT_DIR$/models/User.js" />
         <option value="$PROJECT_DIR$/init-db.js" />
+        <option value="$PROJECT_DIR$/models/Voice.js" />
         <option value="$PROJECT_DIR$/wechat/messages.js" />
       </list>
     </option>
@@ -252,7 +147,7 @@
     <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="182" />
+    <option name="x" value="-15" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="877" />
@@ -370,15 +265,15 @@
       <workItem from="1514789076957" duration="2017000" />
       <workItem from="1515140404153" duration="3121000" />
       <workItem from="1515383206069" duration="1256000" />
-      <workItem from="1517735812306" duration="54486000" />
+      <workItem from="1517735812306" duration="58771000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173716000" />
+    <option name="totallyTimeSpent" value="178001000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="182" y="23" width="1440" height="877" extended-state="0" />
+    <frame x="-15" y="23" width="1440" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -549,14 +444,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/testRR.js" />
-    <entry file="file://$PROJECT_DIR$/oldActivities/v2_deskmate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4188">
-          <caret line="280" column="30" lean-forward="false" selection-start-line="280" selection-start-column="30" selection-end-line="280" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/koa-bodyparser/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
@@ -601,22 +488,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="61" lean-forward="false" selection-start-line="2" selection-start-column="61" selection-end-line="2" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/Content.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/Pair.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="16" lean-forward="true" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -701,22 +572,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1605">
-          <caret line="107" column="29" lean-forward="false" selection-start-line="107" selection-start-column="29" selection-end-line="107" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/Voice.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/bluebird/js/release/async.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -757,10 +612,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/oldActivities/v2_deskmate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="245" column="14" lean-forward="true" selection-start-line="245" selection-start-column="14" selection-end-line="247" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/Content.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/Pair.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="16" lean-forward="true" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="101" column="4" lean-forward="false" selection-start-line="101" selection-start-column="4" selection-end-line="101" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/Voice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="23" lean-forward="false" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/wechat/messages.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="291" column="32" lean-forward="false" selection-start-line="291" selection-start-column="32" selection-end-line="291" selection-end-column="32" />
+        <state relative-caret-position="171">
+          <caret line="350" column="38" lean-forward="true" selection-start-line="350" selection-start-column="38" selection-end-line="350" selection-end-column="38" />
           <folding />
         </state>
       </provider>
