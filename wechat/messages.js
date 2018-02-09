@@ -365,6 +365,7 @@ function replyMessage() {
             let recv = await receiveCall(_user);
             return recv;
         } else if (_user['listen'] && content !== '打电话') {
+            let user = await User.findOne({where:{fromUserName:from}});
             let listenedMedias = await user.getVoices({ where: { author:{[Op.ne]: from }}});
             if (['1', '2', '3'].indexOf(content) !== -1) {
                 let index = ['1', '2', '3'].indexOf(content);
