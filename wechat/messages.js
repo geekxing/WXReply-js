@@ -98,7 +98,7 @@ function receiveCallReply(idx, obj) {
     } else if (idx === IDX_L) {
         return `Ta的信息：
 
-${user.user_name}
+${obj.user_name}
 
 有趣的灵魂不多 ，那就别错过
 快记下感兴趣的声音的主人信息
@@ -286,11 +286,12 @@ async function receiveCall(_user) {
         return ERRPR_LISTEN_LIMIT;
     }
     console.log(listenedMediaIds);
-    // 从数据库中查找 1.没有听过 2.有描述的 3.别人的 录音
+    // 从数据库中查找 1.没有听过 2.有描述的 3.别人的 4.没有被核实举报的 录音
     let contents = await Voice.findAll({ where: {[Op.and]: [
                 { author:{[Op.ne]: from }},
                 { media_id: {[Op.notIn]: listenedMediaIds }},
-                { descr: {[Op.not]: null}}
+                { descr: {[Op.not]: null}},
+                { forbidden: {[Op.eq] : false}}
             ] }});
     if (contents.length > 0) {
         // 在查找结果中随机取一个播放
@@ -345,6 +346,7 @@ function replyMessage() {
             _user['jubao'] = 1;
             return jubaoReply(IDX_M);
         } else if (_user['jubao'] === 1 && ['1', '2', '3'].indexOf(content) !== -1) {
+            let user = await User.findOne({where:{fromUserName:from}});
             let listenedMedias = await user.getVoices({ where: { author:{[Op.ne]: from }}});
             let index = ['1', '2', '3'].indexOf(content);
             if (index+1 > listenedMedias.length) {
@@ -357,6 +359,8 @@ function replyMessage() {
                 await voice.save();
                 return jubaoReply(IDX_N);
             }
+        } else if (_user['jubao'] === 1 && content !== '听电话' && content !== '打电话') {
+            return jubaoReply(IDX_M);
         }
         // Part 2
         if (content === '听电话') {
@@ -372,10 +376,17 @@ function replyMessage() {
                 if (index+1 > listenedMedias.length) {
                     return receiveCallReply(IDX_K, listenedMedias.length);
                 } else {
-                    let voice = listenedMedias[index];
-                    console.log(voice);
-                    let user = voice.getUsers({where: {author: voice.author}});
-                    return receiveCallReply(IDX_L, user);
+                    let checkedVoice = await UserVoices.findOne({where: {fromUserName: user.id, checked: true}});
+                    if (checkedVoice === null) {
+                        let voice = listenedMedias[index];
+                        let user = await User.findOne({where: {fromUserName: voice.author}});
+                        let userVoice = await UserVoices.findOne({where: {media_id: voice.id}});
+                        userVoice.checked = true;
+                        await userVoice.save();
+                        return receiveCallReply(IDX_L, user);
+                    } else {
+                        return '你已经查看过一次别人的个人信息啦';
+                    }
                 }
             } else {
                 return receiveCallReply(IDX_K, listenedMedias.length);
