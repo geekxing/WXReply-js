@@ -3,14 +3,14 @@
   "version": "0.0.1",
   "dependencies": {
     "co-wechat": "^2.3.0",
+    "co-wechat-api": "^3.3.4",
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
-    "koa-router": "^7.3.0",
-    "mime": "^2.1.0",
+    "koa-router": "^7.4.0",
+    "mime": "^2.2.0",
+    "mysql2": "^1.5.1",
     "mz": "^2.7.0",
-    "co-wechat-api": "^3.3.4",
-    "sequelize": "^4.28.6",
     "node-uuid": "^1.4.8",
-    "mysql2": "^1.5.1"
+    "sequelize": "^4.32.6"
   }
 }

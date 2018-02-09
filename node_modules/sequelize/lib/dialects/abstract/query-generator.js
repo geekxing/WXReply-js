@@ -1159,10 +1159,12 @@ const QueryGenerator = {
     // Add HAVING to sub or main query
     if (options.hasOwnProperty('having')) {
       options.having = this.getWhereConditions(options.having, tableName, model, options, false);
-      if (subQuery) {
-        subQueryItems.push(' HAVING ' + options.having);
-      } else {
-        mainQueryItems.push(' HAVING ' + options.having);
+      if (options.having) {
+        if (subQuery) {
+          subQueryItems.push(' HAVING ' + options.having);
+        } else {
+          mainQueryItems.push(' HAVING ' + options.having);
+        }
       }
     }
 
@@ -2389,7 +2391,7 @@ const QueryGenerator = {
 
     if (value === null && comparator === this.OperatorMap[Op.eq]) {
       return this._joinKeyValue(key, this.escape(value, field, escapeOptions), this.OperatorMap[Op.is], options.prefix);
-    } else if (value === null && this.OperatorMap[Op.ne]) {
+    } else if (value === null && comparator === this.OperatorMap[Op.ne]) {
       return this._joinKeyValue(key, this.escape(value, field, escapeOptions), this.OperatorMap[Op.not], options.prefix);
     }
 

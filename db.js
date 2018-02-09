@@ -72,7 +72,7 @@ function defineModel(name, attributes) {
         type: Sequelize.BIGINT,
         allowNull: false
     };
-    console.log('model defined for table: ' + name + '\n' + JSON.stringify(attrs,'  '));
+    // console.log('model defined for table: ' + name + '\n' + JSON.stringify(attrs,'  '));
     return sequelize.define(name, attrs, {
         tableName: name,
         timestamps: false,
@@ -119,5 +119,6 @@ for (let type of TYPES) {
 }
 
 exp.ID = ID_TYPE;
+exp.Op = Sequelize.Op;
 
 module.exports = exp;

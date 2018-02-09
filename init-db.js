@@ -1,7 +1,14 @@
-const model = require('./model.js');
+// const model = require('');
+const db = require('./db');
 const User = require('./models/User');
-const Content = require('./models/Content');
+const Voice = require('./models/Voice').Voice;
+const UserVoices = require('./models/Voice').UserVoices;
 
-User.hasMany(Content, {foreignKey: 'fromUserName', sourceKey: 'fromUserName'});
+User.belongsToMany(Voice, { through: UserVoices, foreignKey: 'fromUserName'});
+Voice.belongsToMany(User, { through: UserVoices, foreignKey: 'media_id'});
 
-model.sync();
+async function abc() {
+    await db.sequelize.sync();
+}
+
+abc();
