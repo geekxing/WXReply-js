@@ -373,6 +373,7 @@ function replyMessage() {
                     return receiveCallReply(IDX_K, listenedMedias.length);
                 } else {
                     let voice = listenedMedias[index];
+                    console.log(voice);
                     let user = voice.getUsers({where: {author: voice.author}});
                     return receiveCallReply(IDX_L, user);
                 }
