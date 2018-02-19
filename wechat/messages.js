@@ -202,7 +202,7 @@ async function getMedia(mediaId) {
     console.log(`下载语音 ${mediaId}`);
     let api = new API(config.wechat.appid, config.wechat.appSecret);
     try {
-        let result = await api.getMedia(mediaId);
+        let result = await api.getMaterial(mediaId);
         console.log(result);
         return result;
     } catch (e) {
@@ -214,7 +214,7 @@ async function uploadVoice(filepath) {
     console.log(`上传语音... `);
     let api = new API(config.wechat.appid, config.wechat.appSecret);
     try {
-        let result = await api.uploadVoiceMedia(filepath);
+        let result = await api.uploadVoiceMaterial(filepath);
         console.log(result);
         return result;
     } catch (e) {
