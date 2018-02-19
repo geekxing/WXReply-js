@@ -4,6 +4,7 @@ const UserVoices = require('../models/Voice').UserVoices;
 const API = require('co-wechat-api');
 const config = require('../config');
 const Op = require('../db').Op;
+var fs = require('fs');
 
 const IDX_K = 'K',
       IDX_L = 'L',
@@ -186,6 +187,18 @@ function randomNum(minNum,maxNum){
     }
 }
 
+function write(filepath, data) {
+    return new Promise((resolve, reject) => {
+        fs.writeFile(filepath, data, (err) => {
+            if (err) {
+                reject(err);
+            }
+            resolve(console.log('写入完成'))
+        });
+
+    })
+}
+
 async function getUser(openid) {
     console.log(`get user info with ${openid}`);
     let api = new API(config.wechat.appid, config.wechat.appSecret);
@@ -204,7 +217,9 @@ async function getMedia(mediaId) {
     try {
         let result = await api.getMaterial(mediaId);
         console.log(result);
-        return result;
+        let filePath = `wechat/mediaLib/${mediaId}.txt`;
+        await write(filePath, result);
+        return filePath;
     } catch (e) {
         throw new Error(e);
     }
