@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b3b6862-55d0-4d83-8e57-a950b8721e08" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/wechat/mediaLib/xiaoshangxing.mp3" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/wechat/test.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/wechat/messages.js" afterPath="$PROJECT_DIR$/wechat/messages.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,11 +27,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="messages.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="messages.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wechat/messages.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="182" column="18" lean-forward="true" selection-start-line="182" selection-start-column="18" selection-end-line="182" selection-end-column="18" />
+            <state relative-caret-position="333">
+              <caret line="228" column="1" lean-forward="true" selection-start-line="228" selection-start-column="1" selection-end-line="228" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/wechat/test.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="28" lean-forward="true" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -50,7 +59,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Invalid</find>
       <find>KEYWO</find>
       <find>findByUid</find>
       <find>index</find>
@@ -80,6 +88,7 @@
       <find>receiveCallReply</find>
       <find>Voice</find>
       <find>fs</find>
+      <find>mediaL</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -116,6 +125,7 @@
         <option value="$PROJECT_DIR$/init-db.js" />
         <option value="$PROJECT_DIR$/models/Voice.js" />
         <option value="$PROJECT_DIR$/wechat/messages.js" />
+        <option value="$PROJECT_DIR$/wechat/test.js" />
       </list>
     </option>
   </component>
@@ -138,7 +148,7 @@
     <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="167" />
+    <option name="x" value="574" />
     <option name="y" value="23" />
     <option name="width" value="1310" />
     <option name="height" value="877" />
@@ -261,15 +271,15 @@
       <workItem from="1517735812306" duration="63062000" />
       <workItem from="1519012593398" duration="1020000" />
       <workItem from="1519045716009" duration="3889000" />
-      <workItem from="1519209363305" duration="274000" />
+      <workItem from="1519209363305" duration="1467000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="187475000" />
+    <option name="totallyTimeSpent" value="188668000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="167" y="23" width="1310" height="877" extended-state="0" />
+    <frame x="574" y="23" width="1310" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21374045" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -325,7 +335,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/wechat-api/lib/util.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/wechat-api/lib/api_common.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/wechat-api/lib/api_quota.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/wechat-api/lib/api_media.js" />
@@ -619,8 +628,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wechat/messages.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="182" column="18" lean-forward="true" selection-start-line="182" selection-start-column="18" selection-end-line="182" selection-end-column="18" />
+        <state relative-caret-position="333">
+          <caret line="228" column="1" lean-forward="true" selection-start-line="228" selection-start-column="1" selection-end-line="228" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wechat/test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="28" lean-forward="true" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
           <folding />
         </state>
       </provider>
