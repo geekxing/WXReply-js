@@ -105,7 +105,10 @@ function receiveCallReply(idx, obj) {
         return `这是你收到的第${obj}段声音
 回复【听电话】你将获取下一段声音
 回复【${obj}】你将获得这段声音的主人信息
-（你最多可以收听3段声音，获取1位主人的信息）`;
+
+注意哦，你最多可以：
+-收听3段声音
+-获取1位主人的信息`;
     } else if (idx === IDX_L) {
         return `Ta的信息：
 
