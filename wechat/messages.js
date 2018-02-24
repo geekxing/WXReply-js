@@ -370,6 +370,7 @@ function replyMessage() {
 
         // Part 1
         if (content === '举报') {
+            return '「校园电话亭」活动已经结束啦~';
             delete _user['listen'];
             _user['jubao'] = 1;
             return jubaoReply(IDX_M);
@@ -392,6 +393,7 @@ function replyMessage() {
         }
         // Part 2
         if (content === '听电话') {
+            return '「校园电话亭」活动已经结束啦~';
             delete _user['jubao'];
             _user['listen'] = 1;
             let recv = await receiveCall(_user);
@@ -422,6 +424,7 @@ function replyMessage() {
         }
         // Part 3
         if (content === '打电话') {
+            return '「校园电话亭」活动已经结束啦~';
             delete _user['listen'];
             delete _user['jubao'];
             _user['step'] = 1;
