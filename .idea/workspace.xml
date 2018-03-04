@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b3b6862-55d0-4d83-8e57-a950b8721e08" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/oldActivities/v3_call.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/wechat/messages.js" afterPath="$PROJECT_DIR$/wechat/messages.js" />
     </list>
@@ -30,8 +31,8 @@
       <file leaf-file-name="messages.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wechat/messages.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6390">
-              <caret line="426" column="37" lean-forward="false" selection-start-line="426" selection-start-column="37" selection-end-line="426" selection-end-column="37" />
+            <state relative-caret-position="345">
+              <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -115,6 +116,7 @@
         <option value="$PROJECT_DIR$/init-db.js" />
         <option value="$PROJECT_DIR$/models/Voice.js" />
         <option value="$PROJECT_DIR$/wechat/test.js" />
+        <option value="$PROJECT_DIR$/oldActivities/v3_call.js" />
         <option value="$PROJECT_DIR$/wechat/messages.js" />
       </list>
     </option>
@@ -138,7 +140,7 @@
     <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="30" />
+    <option name="x" value="236" />
     <option name="y" value="23" />
     <option name="width" value="1310" />
     <option name="height" value="877" />
@@ -161,7 +163,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -178,18 +179,18 @@
             <path>
               <item name="WXReply-js" type="b2602c69:ProjectViewProjectNode" />
               <item name="WXReply-js" type="462c0819:PsiDirectoryNode" />
-              <item name="wechat" type="462c0819:PsiDirectoryNode" />
+              <item name="oldActivities" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="WXReply-js" type="b2602c69:ProjectViewProjectNode" />
               <item name="WXReply-js" type="462c0819:PsiDirectoryNode" />
               <item name="wechat" type="462c0819:PsiDirectoryNode" />
-              <item name="mediaLib" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -263,15 +264,16 @@
       <workItem from="1519045716009" duration="3889000" />
       <workItem from="1519209363305" duration="1467000" />
       <workItem from="1519211670861" duration="446000" />
-      <workItem from="1519452435766" duration="38000" />
+      <workItem from="1519452435766" duration="195000" />
+      <workItem from="1520141675355" duration="842000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="189152000" />
+    <option name="totallyTimeSpent" value="190151000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="30" y="23" width="1310" height="877" extended-state="0" />
+    <frame x="236" y="23" width="1310" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21374045" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -327,7 +329,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/wechat-api/lib/api_common.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/wechat-api/lib/api_quota.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/wechat-api/lib/api_media.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/wechat-api/index.js" />
@@ -625,10 +626,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/oldActivities/v3_call.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7320">
+          <caret line="488" column="30" lean-forward="false" selection-start-line="488" selection-start-column="30" selection-end-line="488" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/wechat/messages.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6390">
-          <caret line="426" column="37" lean-forward="false" selection-start-line="426" selection-start-column="37" selection-end-line="426" selection-end-column="37" />
+        <state relative-caret-position="345">
+          <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
           <folding />
         </state>
       </provider>
