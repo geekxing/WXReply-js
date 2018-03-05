@@ -13,4 +13,5 @@ async function uploadVoice(filepath) {
     }
 }
 
+
 uploadVoice(`/wechat/mediaLib/xiaoshangxing.mp3`);
