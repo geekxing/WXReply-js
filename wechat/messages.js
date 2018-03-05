@@ -29,7 +29,7 @@ function replyEvent(message) {
     if (message.Event === `subscribe`) {
         return `你终于发现我们了~
 这里是校上行，我们带你「玩」大学！`;
-    } else if (message.Event === 'click') {
+    } else if (message.Event === 'CLICK') {
         if (message.EventKey === 'V1001_INTRO') {
             return `嘿！同学
 这里是校上行团队
@@ -54,6 +54,8 @@ function replyEvent(message) {
 或者直接发送你的简历至hr@xiaoshangxing.com 
 和校上行一起激情热聊，逐梦校园！`;
         }
+    } else {
+        return '';
     }
 }
 
