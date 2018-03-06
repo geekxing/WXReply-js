@@ -20,6 +20,8 @@ function replyMessage() {
  
 记住了吗？
 「来这里遇见Ta 」`;
+        } else {
+            return content;
         }
     };
 }
@@ -68,8 +70,8 @@ module.exports = replyMessage;
 //         "sub_button": [
 //             {
 //                 "type": "media_id",
-//                 "name": "约行活动",
-//                 "media_id": "2l6QmkWO-Tb_hFO_8ZSyP7_-xQIfrAN8qhOtFldrbI0"
+//                 "name": "热门约行",
+//                 "media_id": "2l6QmkWO-Tb_hFO_8ZSyP6l6CERj5VJ8LYHADQbdPF8"
 //             },
 //             {
 //                 "type": "view_limited",
