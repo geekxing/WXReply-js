@@ -21,7 +21,7 @@ function replyMessage() {
 记住了吗？
 「来这里遇见Ta 」`;
         } else {
-            return content;
+            return '';
         }
     };
 }
