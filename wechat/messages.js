@@ -29,8 +29,8 @@ function replyMessage() {
 
 function replyEvent(message) {
     if (message.Event === `subscribe`) {
-        return `你终于来啦！这里就是江大的「造趣工厂」——校上行 无疑啦！
-愚人节怎么能不搞点事情？现在就戳链接https://www.xiaoshangxing.com/egao/ 一键生成恶搞图片，一年就皮这么一次，别错过啦！`;
+        return `你终于发现我们了~
+这里是校上行，我们带你「玩」大学！`;
     } else if (message.Event === 'CLICK') {
         if (message.EventKey === 'V1001_INTRO') {
             return `嘿！同学
