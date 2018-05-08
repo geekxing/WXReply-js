@@ -23,7 +23,7 @@ let article = {
     title:"校上行「七天情侣5.0」| 打个赌吧：今年520不再一个人！",
     description: '谈恋爱还能拿iPhone X ？',
     picurl: 'http://mmbiz.qpic.cn/mmbiz_jpg/5kOu9Zp6NhYxxI85UFu7BiaLWeEa1s5LA28XibW1KtEqJ1c5oZyI3at0pV1MMQOZy3r4KicM9oyA85sUPmvLlIh6Q/0?wx_fmt=jpeg',
-    url: 'http://mp.weixin.qq.com/s?__biz=MzIwOTM4NjYxOQ==&mid=100003658&idx=1&sn=471775ccc196b19856597055b55adf65&chksm=1775e25e20026b4894314be694ad7d4fcae1e92698aa24fac57f7199e67db3f427fced6cf3a5#rd'
+    url: 'https://mp.weixin.qq.com/s/XLED_j0fLnc_Nw_m4Zb0Rg'
 }
 
 
@@ -65,9 +65,9 @@ module.exports = replyMessage;
 // {
 //     "button": [
 //     {
-//         "type": "view_limited",
+//         "type": "view",
 //         "name": "七天情侣",
-//         "media_id": "2l6QmkWO-Tb_hFO_8ZSyPx0CnbBwm27aDasoPDtCu-4"
+//         "url": "https://mp.weixin.qq.com/s/XLED_j0fLnc_Nw_m4Zb0Rg"
 //     },
 //     {
 //         "name": "关于我们",
