@@ -11,26 +11,25 @@ function replyMessage() {
             return replyEvent(message);
         }
         let content = message.MsgType === 'text' ? message.Content : '';
-        if (content === `玫瑰行动`) {
-            return `想知道「玫瑰行动」的暗号吗？
-偷偷告诉你，可不要告诉别人哦！
- 
-小哥哥说上句：在哪里遇见Ta？ 
-你需要接下句：来这里遇见Ta
- 
-记住了吗？
-「来这里遇见Ta 」`;
+        if (content === `七天情侣`) {
+            return [article];
         } else {
             return '';
         }
     };
 }
 
+let article = {
+    title:"校上行「七天情侣5.0」| 打个赌吧：今年520不再一个人！",
+    description: '',
+    picurl: 'http://mmbiz.qpic.cn/mmbiz_jpg/5kOu9Zp6NhYxxI85UFu7BiaLWeEa1s5LA28XibW1KtEqJ1c5oZyI3at0pV1MMQOZy3r4KicM9oyA85sUPmvLlIh6Q/0?wx_fmt=jpeg',
+    url: 'http://mp.weixin.qq.com/s?__biz=MzIwOTM4NjYxOQ==&mid=100003658&idx=1&sn=471775ccc196b19856597055b55adf65&chksm=1775e25e20026b4894314be694ad7d4fcae1e92698aa24fac57f7199e67db3f427fced6cf3a5#rd'
+}
+
 
 function replyEvent(message) {
     if (message.Event === `subscribe`) {
-        return `你终于发现我们了~
-这里是校上行，我们带你「玩」大学！`;
+        return [article];
     } else if (message.Event === 'CLICK') {
         if (message.EventKey === 'V1001_INTRO') {
             return `嘿！同学
@@ -62,28 +61,13 @@ function replyEvent(message) {
 }
 
 module.exports = replyMessage;
-
+//
 // {
 //     "button": [
 //     {
-//         "name": "校园活动",
-//         "sub_button": [
-//             {
-//                 "type": "media_id",
-//                 "name": "热门约行",
-//                 "media_id": "2l6QmkWO-Tb_hFO_8ZSyP6l6CERj5VJ8LYHADQbdPF8"
-//             },
-//             {
-//                 "type": "view_limited",
-//                 "name": "七天情侣",
-//                 "media_id": "2l6QmkWO-Tb_hFO_8ZSyP7XpcXuCeucAQofJyLx82kA"
-//             },
-//             {
-//                 "type": "view_limited",
-//                 "name": "玫瑰行动",
-//                 "media_id": "2l6QmkWO-Tb_hFO_8ZSyPwQPlS5IR1n2v5xR6NqiqKw"
-//             }
-//         ]
+//         "type": "view_limited",
+//         "name": "七天情侣",
+//         "media_id": "2l6QmkWO-Tb_hFO_8ZSyPx0CnbBwm27aDasoPDtCu-4"
 //     },
 //     {
 //         "name": "关于我们",
